@@ -8,7 +8,7 @@ void fragment() {
 	vec4 color = texture(TEXTURE, UV);
 	float diff = progress - color.r;
 	
-	// Eliminate dicontinuities between (-)1 and 0.
+	// Eliminate discontinuities between (-)1 and 0.
 	if (diff > 0.5) {
 		diff -= 1.0; // "Pull down" values close to 1 to values close to 0.
 	} else if (diff < -0.5) {
