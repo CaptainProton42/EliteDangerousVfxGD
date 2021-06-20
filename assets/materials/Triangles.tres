@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/textures/triangles.png" type="Texture" id=1]
+[ext_resource path="res://assets/shaders/Triangles.shader" type="Shader" id=2]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/progress = 0.0
+shader_param/outer_width = 0.5
+shader_param/inner_width = 0.1
+shader_param/holotex = ExtResource( 1 )

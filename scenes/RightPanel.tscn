@@ -1,0 +1,319 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scenes/Panel.gd" type="Script" id=1]
+[ext_resource path="res://scenes/LoadingWheel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/triangles.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Exo2-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/shaders/Triangles.shader" type="Shader" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Scanlines:material_override:shader_param/brightness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Borders:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("OmniLight:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Triangles:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Triangles:material_override:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Scanlines:material_override:shader_param/brightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Borders:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("UI:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OmniLight:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.5 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UI:material_override:emission")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 0.521569, 0.721569, 1, 1 ), Color( 1, 0.501961, 0, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Triangles:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/progress = 1.0
+shader_param/outer_width = 0.5
+shader_param/inner_width = 0.1
+shader_param/holotex = ExtResource( 3 )
+
+[sub_resource type="QuadMesh" id=5]
+size = Vector2( 1, 0.563 )
+
+[sub_resource type="Shader" id=6]
+code = "shader_type spatial;
+
+uniform vec4 color : hint_color;
+uniform float brightness : hint_range(0.0f, 1.0f) = 1.0f;
+
+render_mode unshaded;
+
+varying vec3 vertex_pos;
+
+void vertex() {
+	vertex_pos = VERTEX;
+}
+
+void fragment() {
+	ALBEDO = color.rgb;
+	ALPHA = 0.05;
+	ALPHA *= sin(200.0*UV.y - 2.0 * TIME);
+	ALPHA *= smoothstep(0.0, 0.1, UV.x);
+	ALPHA *= 1.0 - smoothstep(0.9, 1.0, UV.x);
+	ALPHA *= brightness;
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource( 6 )
+shader_param/color = Color( 1, 0.4, 0, 1 )
+shader_param/brightness = 0.0
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0.501961, 0, 1 )
+emission_energy = 1.3
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="QuadMesh" id=9]
+size = Vector2( 1, 0.005 )
+
+[sub_resource type="ViewportTexture" id=10]
+viewport_path = NodePath("UI/Viewport")
+
+[sub_resource type="SpatialMaterial" id=11]
+resource_local_to_scene = true
+flags_transparent = true
+albedo_color = Color( 0, 0, 0, 1 )
+albedo_texture = SubResource( 10 )
+emission_enabled = true
+emission = Color( 1, 0.501961, 0, 1 )
+emission_energy = 1.3
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="QuadMesh" id=12]
+size = Vector2( 1, 0.563 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 100
+font_data = ExtResource( 4 )
+
+[node name="RightPanel" type="Spatial"]
+transform = Transform( 0.285948, 0, -1.62169, 0, 1.6467, 0, 1.62169, 0, 0.285948, 1.2, 0.8, -0.2 )
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/close = SubResource( 1 )
+anims/open = SubResource( 2 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( -0.606401, 0, -0.0325276, 0, 0.607275, 0, 0.0325276, 0, -0.606401, -0.0452047, -0.228412, -0.256369 )
+light_color = Color( 1, 0.501961, 0, 1 )
+light_energy = 0.0
+
+[node name="Triangles" type="MeshInstance" parent="."]
+visible = false
+material_override = SubResource( 4 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Scanlines" type="MeshInstance" parent="."]
+material_override = SubResource( 7 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Borders" type="Spatial" parent="."]
+visible = false
+
+[node name="LowerBorder" type="MeshInstance" parent="Borders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.281, 0 )
+material_override = SubResource( 14 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="UppderBorder" type="MeshInstance" parent="Borders"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.281, 0 )
+material_override = SubResource( 14 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="UI" type="MeshInstance" parent="."]
+visible = false
+material_override = SubResource( 11 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="Viewport" type="Viewport" parent="UI"]
+size = Vector2( 1920, 1080 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+
+[node name="ScreenNoServer" type="Control" parent="UI/Viewport"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Viewport/ScreenNoServer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Viewport/ScreenNoServer/CenterContainer"]
+margin_left = 382.0
+margin_top = 374.0
+margin_right = 1578.0
+margin_bottom = 745.0
+custom_constants/separation = 100
+
+[node name="LoadingWheel" parent="UI/Viewport/ScreenNoServer/CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 1196.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="Label" type="Label" parent="UI/Viewport/ScreenNoServer/CenterContainer/VBoxContainer"]
+margin_top = 250.0
+margin_right = 1196.0
+margin_bottom = 371.0
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "GREETINGS, COMMANDER."
+align = 1
