@@ -2,6 +2,10 @@
 
 A recreation of some of the hologram VFX used in the game Elite Dangerous.
 
+## Running the Demo
+
+Run `Main.tscn` from the editor and press "1" or "4" to switch to the side panels and back (just like in Elite).
+
 ![](demo.gif)
 
 ## License
